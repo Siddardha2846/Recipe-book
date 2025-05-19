@@ -1,0 +1,420 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #833AB4;
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    color: white;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    display: flex;
+    height: 200px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgb(126, 127, 173);
+    color: black;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-icons button {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    font-weight: 600;
+}
+
+.nav-icons button:hover {
+    background-color: #ff6f00;
+    transform: scale(1.05);
+}
+
+.nav-icons button:active{
+    transform: scale(1.05);
+    background-color: #000000;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid #ccc;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    background: #f8f8f8;
+}
+
+.search-bar:hover{
+    transform: scale(1.02);
+    border: 1px solid aqua;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 1rem;
+    background: transparent;
+}
+
+/* Main Content */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 2rem;
+    text-align: left;
+}
+
+.main-text {
+    max-width: 600px;
+    text-align: center;
+}
+
+.main-text h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.main-text p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.main-text button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.main-text button:hover {
+    background: #555;
+}
+
+/* Recipe Container */
+.recipe-container {
+    display: none; /* Hide the recipe cards initially */
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Recipe Card */
+.recipe-card {
+    background: #252b85;
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 300px;
+    height: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative; /* For positioning the delete icon */
+}
+
+.recipe-card:hover {
+    transform: translateY(-10px);
+}
+
+.recipe-image {
+    width: 100%;
+    height: 35%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.recipe-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.recipe-card p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.recipe-card .rating {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.recipe-card button {
+    background-color: #ff9800;
+    border: none;
+    margin-top: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.recipe-card button:hover {
+    background-color: #ff6f00;
+}
+
+/* Delete Icon */
+.delete-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #ff6f01;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.delete-icon:hover {
+    color: #c79999; /* Red color on hover */
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    color: #333;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    position: relative;
+    text-align: left;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+}
+
+.modal-content img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    color: #ff6f00;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Favorite Badge */
+.favorite-badge {
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0.2em 0.6em;
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .main-text h1 {
+        font-size: 2rem;
+    }
+
+    .main-text p {
+        font-size: 1rem;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-icons {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+}
+
+/* Add New Recipe Modal */
+#addRecipeModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Content Styling */
+#addRecipeModal .modal-content {
+    background-color: #fff;
+    color: #333;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    position: relative;
+    text-align: left;
+    animation: slideUp 0.4s ease-in-out;
+}
+
+/* Close Button */
+#addRecipeModal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    color: #ff6f00;
+    cursor: pointer;
+}
+
+/* Header Text */
+#addRecipeModal .modal-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Input Fields and Textarea */
+#addRecipeModal input,
+#addRecipeModal textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f8f8f8;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+/* Input focus effect */
+#addRecipeModal input:focus,
+#addRecipeModal textarea:focus {
+    border-color: #ff6f00;
+    outline: none;
+}
+
+/* Button */
+#addRecipeModal button {
+    background-color: #ff9800;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+#addRecipeModal button:hover {
+    background-color: #ff6f00;
+}
+
+/* Add ingredient button */
+#addRecipeModal .ingredients button {
+    background-color: #ff9800;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#addRecipeModal .ingredients button:hover {
+    background-color: #ff6f00;
+}
+
+#loginModal
+  {
+    background-color:  rgba(248, 248, 248, 0.973);
+  }
+  
+#loginModal input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+  }
+
+
+  
+  #loginModal button {
+    background-color: #0f2cea;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  #loginModal button:hover {
+    background-color: #0022ff;
+  }
+  

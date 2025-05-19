@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Book</title>
+  <link rel="stylesheet" href="recipe2.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="logo">RECIPE BO<span style="color: orange;">O</span>K 🍴</div>
+    <div class="nav-icons">
+      <button id="homeBtn" onclick="goHome()">🏠 Home</button>
+      <button id="recipesBtn" onclick="viewRecipes()">📖 Recipes</button>
+      <button id="savedBtn" onclick="viewSavedRecipes()">❤️ Saved <span id="favoriteCount" class="favorite-badge"></span></button>
+      <div class="search-bar">
+        <span>🔍</span>
+        <input type="text" id="searchInput" placeholder="Browse recipes..." oninput="searchRecipes()" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Welcome Section -->
+    <div class="main-text" id="mainText">
+      <h1>Discover, Share, & Cook Your Favorite Recipes!</h1>
+      <p>Explore thousands of recipes with step-by-step instructions. Let's make cooking easy and fun!</p>
+      <button onclick="openAddRecipeModal()">➕ Add New Recipe</button>
+    </div>
+
+    <!-- Recipe Display Section -->
+    <div id="recipeContainer" class="recipe-container">
+      <!-- Recipes dynamically injected here -->
+    </div>
+
+    <!-- Add New Recipe Modal -->
+    <div id="addRecipeModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeAddRecipeModal()">×</span>
+        <h2>Add a New Recipe</h2>
+        <form id="addRecipeForm" onsubmit="addRecipe(event)">
+          <input type="text" id="recipeName" placeholder="Recipe Name" required />
+          <textarea id="recipeDescription" placeholder="Short Description..." required></textarea>
+
+          <!-- Ingredients Section -->
+          <div class="ingredients">
+            <h3>Ingredients</h3>
+            <input type="text" id="ingredientInput" placeholder="Add an ingredient" />
+            <button type="button" onclick="addIngredientField()">Add Ingredient</button>
+            <ul id="ingredientList"></ul>
+          </div>
+
+          <!-- Steps Section -->
+          <div class="steps">
+            <h3>Steps</h3>
+            <textarea id="recipeSteps" placeholder="Write the preparation steps..." required></textarea>
+          </div>
+
+          <!-- Image Upload -->
+          <input type="file" id="recipeImage" accept="image/*" required />
+
+          <button type="submit">Add Recipe</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Recipe Details Modal -->
+    <div id="recipeModal" class="modal" onclick="outsideModalClick(event)">
+      <div id="modalContent" class="modal-content">
+        <!-- Dynamic content goes here -->
+      </div>
+    </div>
+  </main>
+<!-- Login Modal -->
+<div id="loginModal" class="modal" style="display: flex;">
+  <div class="modal-content">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button onclick="handleLogin()">Login</button>
+  </div>
+</div>
+
+  <script src="recipe2.js"></script>
+</body>
+</html>
